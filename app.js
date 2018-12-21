@@ -1,6 +1,10 @@
 const express = require('express');
-const app = express();
+const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
+
 var exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/charity-directory')
@@ -10,8 +14,6 @@ const Client = mongoose.model('Client', {
   name: String,
   description: String
 });
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -49,6 +51,24 @@ app.get('/clients/:id', (req, res) => {
   }).catch((err) => {
     console.log(err.message);
   })
+});
+
+//Route: EDIT
+app.get('/clients/:id/edit', (req, res) => {
+  Client.findById(req.params.id, function(err, client) {
+    res.render('clients-edit', {client: client});
+  })
+});
+
+//Route: UPDATE
+app.put('/clients/:id', (req, res) => {
+  Client.findByIdAndUpdate(req.params.id, req.body)
+    .then(client => {
+      res.redirect(`/clients/${client._id}`)
+    })
+    .catch(err => {
+      console.log(err.messagae)
+    })
 });
 
 app.listen(3000, () => {

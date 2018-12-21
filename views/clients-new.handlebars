@@ -1,18 +1,5 @@
 <form method="POST" action="/clients">
-  <fieldset>
-    <legend>New Client</legend>
-    <!-- NAME -->
-    <p>
-      <label for="client-name">Name</label><br>
-      <input id="client-name" type="text" name="name" />
-    </p>
-    <!-- DESCRIPTION -->
-    <p>
-      <label for="client-description">Description</label><br>
-      <input id="client-description" type="text" name="description" />
-    </p>
-
-  </fieldset>
+  {{> clients-form}}  <!-- calling on code in partials folder. DRY -->
 
   <!-- BUTTON -->
   <p>
