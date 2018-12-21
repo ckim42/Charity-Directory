@@ -36,7 +36,16 @@ app.get('/clients/new', (req, res) => {
 app.post('/clients', (req, res) => {
   Client.create(req.body).then((client) => {
     console.log(client);
-    res.redirect('/');
+    res.redirect('/clients/${client._id}'); //Redir to clients/:id
+  }).catch((err) => {
+    console.log(err.message);
+  })
+});
+
+//Route: SHOW
+app.get('/clients/:id', (req, res) => {
+  Client.findById(req.params.id).then((client) => {
+    res.render('clients-show', { client: client })
   }).catch((err) => {
     console.log(err.message);
   })

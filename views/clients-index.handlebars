@@ -3,6 +3,5 @@
 <a href="/clients/new">New Client</a>
 
 {{#each clients}}
-  <h2>{{this.name}}</h2>
-  <small>{{this.description}}</small>
+  <h2><a href="/clients/{{this._id}}">{{this.name}}</a></h2>
 {{/each}}
