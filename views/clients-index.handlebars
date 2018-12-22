@@ -1,7 +1,10 @@
 <h1>Clients</h1>
 
-<a href="/clients/new">New Client</a>
-
-{{#each clients}}
-  <h2><a href="/clients/{{this._id}}">{{this.name}}</a></h2>
-{{/each}}
+<div class="row">
+  {{#each clients}}
+    <div class="col-md-3">
+      <h2><a href="/clients/{{this._id}}">{{this.name}}</a></h2>
+      <small>{{this.description}}</small>
+    </div>
+  {{/each}}
+</div>

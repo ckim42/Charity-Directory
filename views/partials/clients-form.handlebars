@@ -1,14 +1,16 @@
 <fieldset>
   <legend>Edit Client</legend>
+
   <!-- NAME -->
-  <p>
+  <div class="form-group">
     <label for="client-name">Name</label><br>
-    <input id="client-name" type="text" name="name" value="{{client.name}}"/>
-  </p>
+    <input class="form-control" id="client-name" type="text" name="name" value="{{client.name}}"/>
+  </div>
 
   <!-- DESCRIPTION -->
-  <p>
+  <div class="form-group">
     <label for="client-description">Description</label><br>
-    <input id="client-description" type="text" name="description" value="{{client.description}}" />
-  </p>
+    <textarea class="form-control" id="client-description" type="text" name="description" rows="10"/>{{client.description}} </textarea>
+  </div>
+
 </fieldset>

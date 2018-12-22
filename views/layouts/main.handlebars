@@ -5,10 +5,19 @@
 <head>
   <meta charset="utf-8">
   <title>Charity Directory</title>
+  <!-- Latest compiled and minified CSS to alter TYPOGRAPHY and LAYOUT a bit -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 
-  {{{body}}}
+  {{> navbar}} <!--to pull code from views/partials/navbar.handlebars -->
+
+  <div class="container">
+    {{{body}}}
+  </div>
+
+  <!-- Latest compiled and minified JavaScript. We're not actually using any of boostrap's JS components, but we're putting it here to make it complete. -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
