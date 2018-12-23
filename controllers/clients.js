@@ -1,8 +1,9 @@
 const Client = require('../models/client');
+const Donation = require('../models/donation');
 const express = require('express');
 const app = express();
 
-module.exports = (app, review) => {
+module.exports = (app, client) => {
 
   //Route: INDEX
   app.get('/', (req, res) => {
@@ -33,7 +34,9 @@ module.exports = (app, review) => {
   //Route: SHOW
   app.get('/clients/:id', (req, res) => {
     Client.findById(req.params.id).then((client) => {
-      res.render('clients-show', { client: client })
+      Donation.find({ clientId: req.params.id }).then(donations => {
+        res.render('clients-show', { client: client, donations: donations })
+      })
     }).catch((err) => {
       console.log(err.message);
     });
@@ -63,7 +66,7 @@ module.exports = (app, review) => {
   //Route: DESTROY
   app.delete('/clients/:id', function (req, res) {
     console.log("DELETE client")
-    Client.findByIdAndRemove(req.params.id).then((review) => {
+    Client.findByIdAndRemove(req.params.id).then((client) => {
       res.redirect('/');
     }).catch((err) => {
       console.log(err.message);

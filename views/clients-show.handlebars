@@ -1,16 +1,22 @@
-<a href="/">Back to Home</a>
+<a href="/">Back to Homepage</a>
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <h1>{{client.name}}</h1>
+
+    <h2>{{client.name}}</h2>
     <h3>{{client.description}}</h3>
 
-    <!-- Edit button -->
     <p><a href="/clients/{{client._id}}/edit">Edit</a></p>
 
-    <!-- Delete button -->
+    <!--Delete btn-->
     <p><form method="POST" action="/clients/{{client._id}}?_method=DELETE">
-       <button class="btn btn-primary" type="submit">Delete</button>
+       <button type="submit">Delete</button>
     </form></p>
-    
+
+    {{> donation-form}}
+
+    {{#each donations}}
+      {{> donation}}
+    {{/each}}
+
  </div>
 </div>

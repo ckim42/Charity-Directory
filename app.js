@@ -15,13 +15,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //MODEL
 const Client = require('./models/client')
-// const Comment = require('./models/comment')
+const Donation = require('./models/donation')
 
 //CONTROLLERS
 const clientsController = require('./controllers/clients');
-// const commentsController = require('./controllers/comments');
+const donationsController = require('./controllers/donations');
 clientsController(app);
-// commentsController(app);
+donationsController(app);
 
 const port = process.env.PORT || 3000
 // Mongoose connection

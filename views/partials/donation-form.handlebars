@@ -1,0 +1,34 @@
+<form action="/clients/donations" method="post">
+  <!-- HIDDEN FIELD: reviewId -->
+  <input type="hidden" value="{{client._id}}" name="clientId">
+
+  <fieldset>
+    <legend>Add Donation</legend>
+
+    <!-- TITLE -->
+    <div class="form-group">
+      <label form="donation-title">Charity Name</label><br>
+      <input class="form-control"
+        id="donation-title"
+        type="text"
+        name="title"
+        placeholder="Title"/>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+      <label for="donation-content">Contribution</label><br>
+      <input class="form-control"
+        id="donation-content"
+        type="text"
+        name="content"
+        placeholder="Your comment..."/>
+    </div>
+  </fieldset>
+
+  <!-- BUTTON -->
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Save Donation</button>
+  </div>
+
+</form>
